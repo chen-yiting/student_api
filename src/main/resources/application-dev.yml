@@ -46,4 +46,5 @@ logging:
       fh:
         student:
           dao : debug
+  config: classpath:log4j2.yml
 
