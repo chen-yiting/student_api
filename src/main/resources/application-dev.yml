@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+#spring:
+  #datasource:
+   # username: root
+   # password: 123456
+    #url: jdbc:mysql://localhost:3306/six_ssm_product?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    #driver-class-name: com.mysql.jdbc.Driver
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/six_ssm_product?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+    filters: stat,wall,log4j
+    dbcp2:
+    min-idle: 5
+    initial-size: 5
+    max-total: 5
+    max-wait-millis: 200
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: false
+    cache-enabled: false
+
+
+
+#showSql
+logging:
+  level:
+    com:
+      fh:
+        student:
+          dao : debug
+

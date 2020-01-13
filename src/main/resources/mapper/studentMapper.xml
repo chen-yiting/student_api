@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fh.student.dao.StudentDao">
+    <select id="queryCount" resultType="long" parameterType="com.fh.student.bean.po.StudentBean">
+        select count(id) from t_student where isdel=1
+    </select>
+    <select id="queryStudentPageList" resultType="com.fh.student.bean.po.StudentBean">
+      SELECT
+t_student.id,
+t_student.`name`,
+t_student.sex,
+t_student.birthday,
+t_student.address,
+t_student.imgpath,
+t_student.ipaddr,
+t_student.isdel
+FROM
+t_student
+ where isdel=1 limit #{page.start},#{page.length}
+    </select>
+    <update id="deleteStudentByIsdel" parameterType="int">
+        update t_student set isdel=0 where id=#{id}
+    </update>
+</mapper>
